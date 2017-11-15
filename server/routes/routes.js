@@ -33,33 +33,15 @@ module.exports = function(DataHelpers) {
   });
 
   Routes.get("/:user/current", function(req, res) {
-    // DataHelpers.addLike(req.body.uniqueId, (err) => {
-    //   if (err) {
-    //     res.status(400).json({error: err.message});
-    //   } else {
-    //     res.status(201).send();
-    //   }
-    // });
+    
   });
 
   Routes.post("/:user/next", function(req, res) {
-    // DataHelpers.removeLike(req.body.uniqueId, (err) => {
-    //   if (err) {
-    //     res.status(400).json({error: err.message});
-    //   } else {
-    //     res.status(201).send();
-    //   }
-    // });
+
   });
 
   Routes.post("/:user/modify", function(req, res) {
-    // DataHelpers.getLikes(req.params.id, (err, likes) => {
-    //   if (err) {
-    //     res.status(500).json({ error: err.message });
-    //   } else {
-    //     res.send(likes);
-    //   }
-    // })
+
   })
 
   return Routes;
