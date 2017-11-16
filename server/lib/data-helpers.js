@@ -11,8 +11,17 @@ module.exports = function makeDataHelpers(db) {
       users.insertOne(newUser);
     },
 
-    getInt: function(user, callback) {
-
+    getInt: function(userEmail, callback) {
+      users.find({email: userEmail}).limit(1).each((err, res) => {
+        if (res !== null && res !== undefined) {
+          console.log('GETINT RES', res);
+          callback(null, res.integer);
+        }
+        else if (err) {
+          console.log('GETINT ERR', err);
+          callback(err, null);
+        }
+      })
     },
 
     incrementInt: function(user, callback) {

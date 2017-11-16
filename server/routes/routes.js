@@ -33,7 +33,14 @@ module.exports = function(DataHelpers) {
   });
 
   Routes.get("/:user/current", function(req, res) {
-    
+    console.log('REQ PARAMS', req.params);
+    DataHelpers.getInt(req.params.user, (err, result) => {
+      if (err) {
+        res.status(500).json({error: err});
+      } else {
+        res.status(200).json({integer: result});
+      }
+    })
   });
 
   Routes.post("/:user/next", function(req, res) {
