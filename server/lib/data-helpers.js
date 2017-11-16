@@ -24,12 +24,28 @@ module.exports = function makeDataHelpers(db) {
       })
     },
 
-    incrementInt: function(user, callback) {
-
+    incrementInt: function(userEmail, callback) {
+      users.findOneAndUpdate({email: userEmail}, {$inc: {integer: 1}}, (err, res) => {
+        if (err) {
+          console.log('INCINT ERR', err);
+          callback(err, null);
+        } else {
+          console.log('INCTINT RES', res);
+          callback(null, res);
+        }
+      });
     },
 
-    updateInt: function(user, callback) {
-
+    updateInt: function(updateObj, callback) {
+      users.updateOne({email: updateObj.email}, {$set: {integer: Number(updateObj.newInt)}}, (err, res) => {
+        if (err) {
+          console.log('UPDATEINT ERR', err);
+          callback(err, null);
+        } else {
+          console.log('UPDATEINT RES', res);
+          callback(null, res);
+        }
+      })
     },
 
     validateUser: function(user, callback) {
